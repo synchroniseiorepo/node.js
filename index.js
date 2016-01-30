@@ -1,5 +1,5 @@
 var _  = require('underscore');
-var io = require('socket.io-client')("http://websocket.synchronise.io", {
+var io = require('socket.io-client')("https://websocket.synchronise.io", {
     reconnect                : true,
     'try multiple transports': true,
     path                     : "/socket.io",
@@ -136,7 +136,15 @@ var Synchronise = function(api_key){
                         callbacks['Cloud.run'][result.identifier][currentKey].identity.amountOfCalls = callbacks['Cloud.run'][result.identifier][currentKey].identity.amountOfCalls+1;
 
                         // Current request temporary storage for timing
-                        var reqTempStore = requests['Cloud.run'][result.identifier][currentKey][result.uniqueRealtimeID];
+                        var reqTempStore = requests['Cloud.run'];
+                            reqTempStore = reqTempStore[result.identifier];
+                            reqTempStore = reqTempStore[currentKey];
+
+                        if(typeof(reqTempStore) !== "undefined"){
+                            if(reqTempStore.hasOwnProperty(result.uniqueRealtimeID)){
+                                reqTempStore = reqTempStore[result.uniqueRealtimeID];
+                            }
+                        }
 
                         if(reqTempStore){
                             reqTempStore.endCommunication  = new Date();
