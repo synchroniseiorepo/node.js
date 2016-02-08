@@ -1,6 +1,6 @@
 {
   "name": "synchronise",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "description": "A wrapper to communicate with www.synchronise.io web service",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/synchroniseiorepo/node.js.git"
   },
+  "contributors": [],
   "keywords": [
     "api",
     "database",
@@ -28,14 +29,9 @@
     "url": "https://github.com/synchroniseiorepo/node.js/issues"
   },
   "homepage": "https://github.com/synchroniseiorepo/node.js#readme",
-  "devDependencies": {
-    "chai": "^3.4.1",
-    "mocha": "^2.3.4"
-  },
   "dependencies": {
-    "marky-markdown": "^6.0.3",
-    "socket.io-client": "1.4.4",
-    "underscore": "1.8.3"
+    "underscore": "1.8.3",
+    "request": "2.69.0"
   },
   "engines": {
     "node": "*"
