@@ -39,7 +39,6 @@ var Synchronise = function(api_key){
              * @param  {String}idComponent
              * @param  {Object}params
              * @param  {Object}response
-             * @return {Object}
              */
             run: function(idComponent, params, response){
                 request({
