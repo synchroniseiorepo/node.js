@@ -29,30 +29,6 @@ You can find your Public Key on the export section of a Component.
 
 ![Find your public key](https://images.synchronise.io/public_key.png)
 
-
-----------
-
-
-### Connection / Disconnection
-Since your users could potentially be using your app on an unstable network we decided to provide you with a way in managing your app in consequence. You can be notified programmatically when the connection between your app and Synchronise is lost or reacquired. The library will always try to reconnect to Synchronise on the background. We have also implemented some mechanisms to automatically queue the requests and retry them when the connection is re-established.
-
-The library triggers 2 type of events Connected and Lost. Both events can be propagated to any function of your app using a callback mechanism. The events might be called multiples times during the life cycle of your app since connection and disconnection can occur many times if the internet connection is unstable.
-
-#### Connected
-
-    Synchronise.Connection.Connected(function(){
-	    // Code to execute every time the connection is established (or re-established)
-    });
-
-#### Lost
-
-    Synchronise.Connection.Lost(function(){
-	    // Code to execute every time the connection is established (or re-established)
-    });
-
-**Important:** The Connected/Lost events are taken from the Javascript library and are implemented in Node.JS for consistency. Your server is less likely to receive Connected/Lost events since it is using a stable and consistent connection. A good example of using the connections events in Node.JS is for executing some other code on your server only when the connection with Synchronise has been established.
-
-
 ----------
 
 
