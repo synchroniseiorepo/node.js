@@ -34,7 +34,7 @@ var Synchronise = function(api_key){
          */
         Component: {
             /**
-             * Run a component on Synchronise and returns its the answers
+             * Run a component on Synchronise and returns the answers
              *
              * @param  {String}idComponent
              * @param  {Object}params
@@ -47,6 +47,54 @@ var Synchronise = function(api_key){
                     method: "post",
                     body: _.extend({
                         id: idComponent
+                    }, params),
+                    headers: {
+                        "x-synchronise-public-key": target.public_key
+                    },
+                    json: true
+                }, function(err, res, body){
+                    if(res.statusCode == 200){
+                        if(typeof(res) != "undefined"){
+                            if(typeof(response.success) != "undefined"){
+                                response.success(body);
+                            }
+                        }
+                    }else if(res.statusCode == 500){
+                        if(typeof(res) != "undefined"){
+                            if(typeof(response.error) != "undefined"){
+                                response.error(body);
+                            }
+                        }
+                    }
+
+                    if(typeof(response) != "undefined"){
+                        if(typeof(response.always) != "undefined"){
+                            response.always();
+                        }
+                    }
+                });
+            }
+        },
+        /**
+         * Utility functions to communicate with the "Workflow" API of Synchronise
+         *
+         * @return {Object}
+         */
+        Workflow: {
+            /**
+             * Run a workflow on Synchronise and returns the answers
+             *
+             * @param  {String}idWorkflow
+             * @param  {Object}params
+             * @param  {Object}response
+             */
+            run: function(idWorkflow, params, response){
+                request({
+                    "rejectUnauthorized": false,
+                    url: API_URL+"/workflow/run",
+                    method: "post",
+                    body: _.extend({
+                        id: idWorkflow
                     }, params),
                     headers: {
                         "x-synchronise-public-key": target.public_key
