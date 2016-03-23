@@ -1,6 +1,6 @@
 {
   "name": "synchronise",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A wrapper to communicate with www.synchronise.io web service",
   "main": "index.js",
   "scripts": {
